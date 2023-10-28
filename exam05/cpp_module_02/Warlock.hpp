@@ -12,7 +12,7 @@ class Warlock
 		Warlock(Warlock const &copy);
 		Warlock &operator=(Warlock const &copy);
 		Warlock();
-		std::map <std::string, ASpell*> _SpellBook;
+		SpellBook _SpellBook;
 
 	public:
 
