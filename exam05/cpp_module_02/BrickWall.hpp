@@ -1,7 +1,7 @@
 #pragma once
 #include "ATarget.hpp"
 
-class BricWall : public ATarget {
+class BrickWall : public ATarget {
 	public:
 		BrickWall();
 		~BrickWall();

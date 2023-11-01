@@ -51,5 +51,5 @@ void Warlock::forgetSpell(std::string spellName) {
 
 void Warlock::launchSpell(std::string spellName, ATarget &target) {
 	if (_SpellBook.createSpell(spellName))
-		_SpellBook.createSpell(pellName)->launch(target);
+		_SpellBook.createSpell(spellName)->launch(target);
 }

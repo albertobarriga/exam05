@@ -1,4 +1,5 @@
 #pragma once
+#include "ASpell.hpp"
 #include <map>
 
 class SpellBook {
