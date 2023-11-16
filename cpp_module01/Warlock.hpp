@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <map>
 #include "ASpell.hpp"
@@ -12,6 +11,7 @@ class Warlock {
 		Warlock();
 		Warlock(Warlock const &copy);
 		Warlock &operator=(Warlock const &copy);
+		std::map<std::string, ASpell*> _spellbook;
 
 	public:
 		Warlock(std::string const &name, std::string const &title);
@@ -20,10 +20,9 @@ class Warlock {
 		std::string const &getTitle() const;
 		void setTitle(std::string const &title);
 		void introduce() const;
-
+		
 		void learnSpell(ASpell* spell);
 		void forgetSpell(std::string spellname);
-		void launchSpell(std::string name, ATarget const &target);
-
+		void launchSpell(std::string spellname, ATarget const &target);
 
 };

@@ -1,17 +1,6 @@
 #include "SpellBook.hpp"
-#include "Warlock.hpp"
-
-SpellBook::SpellBook() {}
-
-SpellBook::~SpellBook() {	
-	std::map<std::string, ASpell*>::iterator it = _spellbook.begin();
-	while (it != _spellbook.end())
-	{
-		delete it->second;
-		++it;
-	}
-	_spellbook.clear();
-}
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 SpellBook::SpellBook(SpellBook const &copy) {
 	*this = copy;
@@ -22,9 +11,23 @@ SpellBook &SpellBook::operator=(SpellBook const &copy) {
 	return *this;
 }
 
+SpellBook::SpellBook() {}
+
+SpellBook::~SpellBook() {
+	std::map<std::string, ASpell*>::iterator it = _spellbook.begin();
+	while(it != _spellbook.end())
+	{	
+		delete it->second;
+		++it;
+	}
+	_spellbook.clear();
+}
+
 void SpellBook::learnSpell(ASpell* spell) {
 	if (spell)
-		_spellbook[spell->getName()] = spell->clone();
+	{
+		_spellbook[spell->getName()] = spell;	
+	}
 }
 
 void SpellBook::forgetSpell(std::string const &spellname) {
@@ -36,9 +39,18 @@ void SpellBook::forgetSpell(std::string const &spellname) {
 
 ASpell* SpellBook::createSpell(std::string const &spellname) {
 	ASpell* tmp = NULL;
-	std::map<std::string, ASpell*>::iterator it = _spellbook.find(spellname);
-
-	if (it != _spellbook.end())
-		tmp = it->second;
+	if (_spellbook.find(spellname) != _spellbook.end()) {
+		tmp = _spellbook[spellname];
+	}
 	return tmp;
+	
+
 }
+
+
+
+
+
+
+
+

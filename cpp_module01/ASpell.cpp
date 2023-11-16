@@ -6,6 +6,8 @@ ASpell::ASpell(std::string name, std::string effects) {
 	_effects = effects;
 }
 
+ASpell::~ASpell() {}
+
 ASpell::ASpell(ASpell const &copy) {
 	*this = copy;
 }
@@ -15,8 +17,6 @@ ASpell &ASpell::operator=(ASpell const &copy) {
 	_effects = copy._effects;
 	return *this;
 }
-
-ASpell::~ASpell() {}
 
 std::string ASpell::getName() const {
 	return _name;

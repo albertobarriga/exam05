@@ -8,3 +8,4 @@ class BrickWall : public ATarget {
 		~BrickWall();
 		ATarget* clone() const;
 };
+

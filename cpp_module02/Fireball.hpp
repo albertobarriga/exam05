@@ -8,3 +8,5 @@ class Fireball : public ASpell {
 		~Fireball();
 		ASpell* clone() const;
 };
+
+

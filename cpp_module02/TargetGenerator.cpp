@@ -1,10 +1,6 @@
 #include "TargetGenerator.hpp"
-
-TargetGenerator::TargetGenerator() {
-}
-
-TargetGenerator::~TargetGenerator() {
-}
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 
 TargetGenerator::TargetGenerator(TargetGenerator const &copy) {
 	*this = copy;
@@ -15,21 +11,33 @@ TargetGenerator &TargetGenerator::operator=(TargetGenerator const &copy) {
 	return *this;
 }
 
+TargetGenerator::TargetGenerator() {}
+
+TargetGenerator::~TargetGenerator() {
+	
+}
+
 void TargetGenerator::learnTargetType(ATarget* target) {
 	if (target)
-		_target[target->getType()] = target;
+	{
+		_target[target->getType()] = target;	
+	}
 }
 
 void TargetGenerator::forgetTargetType(std::string const &targetname) {
 	if (_target.find(targetname) != _target.end())
+	{
 		_target.erase(targetname);
+	}
 }
 
 ATarget* TargetGenerator::createTarget(std::string const &targetname) {
 	ATarget* tmp = NULL;
-	std::map<std::string, ATarget*>::iterator it = _target.find(targetname);
-
-	if (it != _target.end())
-		tmp = it->second;
+	if (_target.find(targetname) != _target.end()) {
+		tmp = _target[targetname];
+	}
 	return tmp;
+	
+
 }
+
